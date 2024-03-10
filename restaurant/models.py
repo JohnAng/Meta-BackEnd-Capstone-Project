@@ -9,13 +9,13 @@ class Booking(models.Model):
     booking_date = models.DateTimeField()
 
     def __str__(self):
-        return self.name + "'s " + "reservation"
+        return f"{self.name}'s reservation"
 
 
-class Menu(models.Model):
+class MenuItem(models.Model):
     title = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    invantory = models.IntegerField()
+    inventory = models.IntegerField()
 
     def __str__(self):
-        return self.title
+        return f"{self.title} : {self.price}"
