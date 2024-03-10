@@ -1,5 +1,4 @@
 from django.test import TestCase
-from restaurant.views import MenuView
 from restaurant.models import Menu
 from restaurant.serializers import MenuItemSerializer
 from rest_framework.test import APIClient
