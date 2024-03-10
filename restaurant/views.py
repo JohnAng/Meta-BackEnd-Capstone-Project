@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .serializers import MenuItemSerializer, BookingSerializer, UserSerializer
-from .models import Booking, MenuItem
+from .models import Booking, Menu
 from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
@@ -17,14 +17,14 @@ class UserViewSet(ModelViewSet):
    permission_classes = [IsAuthenticated] 
 
 
-class MenuItemView(ListCreateAPIView):
-    queryset = MenuItem.objects.all()
+class MenuView(ListCreateAPIView):
+    queryset = Menu.objects.all()
     serializer_class = MenuItemSerializer
     permission_classes = [IsAuthenticated]
 
 
 class SingleMenuItemView(RetrieveUpdateDestroyAPIView):
-    queryset = MenuItem.objects.all()
+    queryset = Menu.objects.all()
     serializer_class = MenuItemSerializer
     permission_classes = [IsAuthenticated]
 

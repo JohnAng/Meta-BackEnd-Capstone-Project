@@ -1,9 +1,32 @@
 from django.test import TestCase
-from restaurant.models import MenuItem
+from restaurant.models import Menu
 
 
-class MenuItemTest(TestCase):
+class MenuTest(TestCase):
+
+    def get_test_cases(self):
+        return [
+            {
+                "title": "IceCream",
+                "price": 80,
+                "inventory": 100,
+                "expected_result": "IceCream : 80.00",
+            },
+            {
+                "title": "Pizza",
+                "price": 15.5,
+                "inventory": 50,
+                "expected_result": "Pizza : 15.50",
+            },
+            # Add more test cases as needed
+        ]
+
     def test_get_item(self):
-        item = MenuItem.objects.create(title="IceCream", price=80, inventory=100)
-        expected_result = "IceCream : 80.00"
-        self.assertEqual(str(item), expected_result)
+        for case in self.get_test_cases():
+            with self.subTest(case=case):
+                item = Menu.objects.create(
+                    title=case["title"],
+                    price=case["price"],
+                    inventory=case["inventory"],
+                )
+                self.assertEqual(str(item), case["expected_result"])
